@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG S6_OVERLAY_VERSION=v1.17.2.0
 ARG DEBIAN_FRONTEND="noninteractive"
@@ -15,11 +15,12 @@ RUN \
       xmlstarlet \
       uuid-runtime \
       unrar \
+      jq \
     && \
 
 # Fetch and extract S6 overlay
-    curl -J -L -o /tmp/s6-overlay-amd64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz && \
-    tar xzf /tmp/s6-overlay-amd64.tar.gz -C / && \
+    curl -J -L -o /tmp/s6-overlay-aarch64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-aarch64.tar.gz && \
+    tar xzf /tmp/s6-overlay-aarch64.tar.gz -C / && \
 
 # Add user
     useradd -U -d /config -s /bin/false plex && \
