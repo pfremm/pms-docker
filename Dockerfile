@@ -6,6 +6,9 @@ ENV TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
 
 ENTRYPOINT ["/init"]
 
+ARG ARCH
+ENV ARCH=$ARCH
+
 RUN \
 # Update and get dependencies
     apt-get update && \
@@ -20,7 +23,7 @@ RUN \
     && \
 
 # Fetch and extract S6 overlay
-   curl -J -L -o /tmp/s6-overlay-aarch64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-aarch64.tar.gz 
+   curl -J -L -o /tmp/s6-overlay-aarch64.tar.gz https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-${ARCH}.tar.gz 
 #&& \
  
 RUN tar xzf /tmp/s6-overlay-aarch64.tar.gz -C ./ && \

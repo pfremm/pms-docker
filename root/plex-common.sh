@@ -30,7 +30,7 @@ function getVersionInfo {
  # remoteFile=$(echo "${versionInfo}" | sed -n 's/.*file="\([^"]*\)".*/\1/p')
 
 remoteVersion=$(curl https://plex.tv/api/downloads/5.json | jq '.computer.Linux.version')
-remoteFile=$(curl https://plex.tv/api/downloads/5.json | jq '.computer.Linux.releases[]| select(.build == "linux-aarch64").url' | tr -d \")
+remoteFile=$(curl https://plex.tv/api/downloads/5.json | jq '.computer.Linux.releases[]| select(.build == "linux-$ARCH").url' | tr -d \")
  
 }
 
