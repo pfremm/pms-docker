@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function getVersionInfo {
-  local version="$1"
-  local token="$2"
-  declare -n remoteVersion=$3
-  declare -n remoteFile=$4
+#  local version="$1"
+#  local token="$2"
+#  declare -n remoteVersion=$3
+#  declare -n remoteFile=$4
   
   # local channel
   # local tokenNeeded=1
@@ -30,7 +30,7 @@ function getVersionInfo {
  # remoteFile=$(echo "${versionInfo}" | sed -n 's/.*file="\([^"]*\)".*/\1/p')
 
 remoteVersion=$(curl https://plex.tv/api/downloads/5.json | jq '.computer.Linux.version')
-remoteFile=$(curl https://plex.tv/api/downloads/5.json | jq '.computer.Linux.releases[]| select(.build == "linux-aarch64").url')
+remoteFile=$(curl https://plex.tv/api/downloads/5.json | jq '.computer.Linux.releases[]| select(.build == "linux-aarch64").url' | tr -d \")
  
 }
 
@@ -41,6 +41,7 @@ function installFromUrl {
 
 function installFromRawUrl {
   local remoteFile="$1"
+  echo $remoteFile
   curl -J -L -o /tmp/plexmediaserver.deb "${remoteFile}"
   local last=$?
 

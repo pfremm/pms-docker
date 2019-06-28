@@ -1,6 +1,7 @@
 #!/bin/bash
 
-. /plex-common.sh
+source  ./plex-common.sh
+getVersionInfo
 
 # echo "${TAG}" > /version.txt
 # if [ ! -z "${URL}" ]; then
@@ -15,5 +16,6 @@
 #   fi
   
   echo "Attempting to install: ${remoteVersion}"
+  #echo "${remoteFile}"
   installFromUrl "${remoteFile}"
-fi
+#fi
