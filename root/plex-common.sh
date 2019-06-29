@@ -19,7 +19,7 @@ function installFromRawUrl {
   local last=$?
 
   # test if deb file size is ok, or if download failed
-  if [[ "$last" -gt "0" ]] || [[ $(stat -c %s /tmp/plexmediaserver.deb) -lt 10000 ]]; thenhttps://vintagerevivals.com/3-frustrating-furniture-painting-problems-solved-with-one-tip/
+  if [[ "$last" -gt "0" ]] || [[ $(stat -c %s /tmp/plexmediaserver.deb) -lt 10000 ]]; then
     echo "Failed to fetch update"
     exit 1
   fi
