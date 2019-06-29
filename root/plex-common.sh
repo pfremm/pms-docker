@@ -27,4 +27,3 @@ function installFromRawUrl {
   dpkg -i --force-confold /tmp/plexmediaserver.deb
   rm -f /tmp/plexmediaserver.deb
 }
---arg EMAILID "$EMAILID"--arg EMAILID "$EMAILID"build
