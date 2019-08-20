@@ -3,7 +3,7 @@
 source  ./plex-common.sh
 getVersionInfo
 
-# echo "${TAG}" > /version.txt
+echo "${TAG}" > /version.txt
 # if [ ! -z "${URL}" ]; then
 #   echo "Attempting to install from URL: ${URL}"
 #   installFromRawUrl "${URL}"
