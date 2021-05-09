@@ -17,6 +17,8 @@ jobs:
         run: echo ${{ secrets.DOCKER_HUB }} | docker login -u pfremm --password-stdin
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Find latest
+        run: s6_overlay_release=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases/latest | jq .tag_name | tr -d \") && echo $s6_overlay_release
       - name: Run Buildx
         run: |
           docker buildx build \
