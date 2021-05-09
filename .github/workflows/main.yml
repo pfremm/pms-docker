@@ -15,6 +15,8 @@ jobs:
           version: latest
       - name: Docker login
         run: echo ${{ secrets.DOCKER_HUB }} | docker login -u pfremm --password-stdin
+      - name: Install jq
+        run: apt-get update && apt-get install -y jq
       - name: Run Buildx
         run: |
           docker buildx build \
