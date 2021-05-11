@@ -21,8 +21,9 @@ jobs:
         run: s6_overlay_release=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases/latest | jq .tag_name | tr -d \") >> $GITHUB_ENV
       - name: Run Buildx
         run: |
+          echo "s6 version: ${{ env.s6_overlay_release }}"
           docker buildx build \
             --platform linux/arm64 \
             --output "type=image" --push \
-            --build-arg S6_OVERLAY_RELEASE=${{ env.s6_overlay_release }} \
+            --build-arg "S6_OVERLAY_RELEASE=${{ env.s6_overlay_release }}" \
             --tag $GITHUB_REPOSITORY:arm64 .
