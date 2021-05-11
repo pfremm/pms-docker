@@ -18,7 +18,7 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
       - name: Find latest S6 Overlay
-        run: s6_overlay_release=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases/latest | jq .tag_name | tr -d \") >> $GITHUB_ENV
+        run: s6_overlay_release=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases/latest | jq .tag_name | tr -d \")  && echo $s6_overlay_release>> $GITHUB_ENV
       - name: Run Buildx
         run: |
           echo "s6 version: ${{ env.s6_overlay_release }}"
