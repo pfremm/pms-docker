@@ -26,4 +26,5 @@ jobs:
             --platform linux/arm64 \
             --output "type=image" --push \
             --build-arg "S6_OVERLAY_RELEASE=${{ env.s6_overlay_release }}" \
+            --build-arg "ARCH=aarch64"
             --tag $GITHUB_REPOSITORY:arm64 .
